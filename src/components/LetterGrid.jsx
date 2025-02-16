@@ -58,29 +58,34 @@ export default function LetterGrid() {
       const data = await response.json();
       setTranslatedText(data.responseData.translatedText);
     } catch (error) {
-      console.error("Erreur de traduction", error);
-      setTranslatedText("Erreur de traduction");
+      console.error("Error", error);
+      setTranslatedText("Error");
     }
   };
 
   return (
-    <div className="flex flex-col items-center p-4">
+    <div style={{ backgroundColor: '#1e1e1e', color: '#f5f5f5', minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '20px' }}>
+      {/* Titre avec espace */}
+      <h1 style={{ marginTop: '20px', fontSize: '24px', fontWeight: 'bold', color: '#ffffff' }}>
+        Outward Runes
+      </h1>
+
       {/* Affichage du texte saisi */}
-      <div className="mb-4 p-2 border border-gray-300 rounded w-full text-center text-xl font-bold">
+      <div style={{ marginBottom: '20px', padding: '10px', border: '1px solid #333', borderRadius: '4px', width: '100%', maxWidth: '600px', textAlign: 'center', fontSize: '18px', fontWeight: 'bold', backgroundColor: '#333' }}>
         {inputText || "Choose Runes"}
       </div>
 
       {/* Grille de boutons */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '8px' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '8px', width: '100%', maxWidth: '600px' }}>
         {characters.split("").map((char, index) => (
           <div key={index} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <button
-              style={{ width: '48px', height: '48px', display: 'flex', justifyContent: 'center', alignItems: 'center', border: '1px solid #ccc', borderRadius: '4px', backgroundColor: '#fff', cursor: 'pointer', transition: 'background-color 0.3s' }}
+              style={{ width: '48px', height: '48px', display: 'flex', justifyContent: 'center', alignItems: 'center', border: '1px solid #555', borderRadius: '4px', backgroundColor: '#333', cursor: 'pointer', transition: 'background-color 0.3s' }}
               onClick={() => handleClick(char)}
             >
               <img src={imageMap[char]} alt={char} style={{ width: '40px', height: '40px' }} />
             </button>
-            <span style={{ fontSize: '12px', marginTop: '4px' }}>{char}</span>
+            <span style={{ fontSize: '12px', marginTop: '4px', color: '#f5f5f5' }}>{char}</span>
           </div>
         ))}
       </div>
@@ -88,19 +93,19 @@ export default function LetterGrid() {
       {/* Boutons supplémentaires */}
       <div style={{ marginTop: '16px', display: 'flex', justifyContent: 'center', gap: '8px' }}>
         <button
-          style={{ padding: '8px 16px', backgroundColor: '#6b7280', color: '#fff', borderRadius: '4px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)', transition: 'background-color 0.3s' }}
+          style={{ padding: '8px 16px', backgroundColor: '#444', color: '#fff', borderRadius: '4px', boxShadow: '0 2px 4px rgba(0,0,0,0.5)', transition: 'background-color 0.3s' }}
           onClick={() => handleClick(" ")}
         >
           Space
         </button>
         <button
-          style={{ padding: '8px 16px', backgroundColor: '#ef4444', color: '#fff', borderRadius: '4px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)', transition: 'background-color 0.3s' }}
+          style={{ padding: '8px 16px', backgroundColor: '#ef4444', color: '#fff', borderRadius: '4px', boxShadow: '0 2px 4px rgba(0,0,0,0.5)', transition: 'background-color 0.3s' }}
           onClick={() => setInputText("")}
         >
           Reset
         </button>
         <button
-          style={{ padding: '8px 16px', backgroundColor: '#3b82f6', color: '#fff', borderRadius: '4px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)', transition: 'background-color 0.3s' }}
+          style={{ padding: '8px 16px', backgroundColor: '#3b82f6', color: '#fff', borderRadius: '4px', boxShadow: '0 2px 4px rgba(0,0,0,0.5)', transition: 'background-color 0.3s' }}
           onClick={translateText}
         >
           Translate
@@ -109,7 +114,7 @@ export default function LetterGrid() {
 
       {/* Affichage du texte traduit */}
       {translatedText && (
-        <div style={{ marginTop: '16px', padding: '8px', border: '1px solid #ccc', borderRadius: '4px', width: '100%', textAlign: 'center', fontSize: '18px', fontWeight: '600' }}>
+        <div style={{ marginTop: '16px', padding: '8px', border: '1px solid #555', borderRadius: '4px', width: '100%', maxWidth: '600px', textAlign: 'center', fontSize: '18px', fontWeight: '600', backgroundColor: '#333', color: '#f5f5f5' }}>
           Translation : {translatedText}
         </div>
       )}
