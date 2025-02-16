@@ -66,7 +66,7 @@ export default function LetterGrid() {
   return (
     <div style={{ backgroundColor: '#1e1e1e', color: '#f5f5f5', minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '20px' }}>
       {/* Titre avec espace */}
-      <h1 style={{ marginTop: '20px', fontSize: '24px', fontWeight: 'bold', color: '#ffffff' }}>
+      <h1 style={{ marginTop: '2px', fontSize: '24px', fontWeight: 'bold', color: '#ffffff' }}>
         Outward Runes
       </h1>
 
